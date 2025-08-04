@@ -92,16 +92,29 @@ class Octave_Filters():
             i = where(self.fi == 1000.)[0][0]
 
             # build the frequency scale
+            # range out octave
+            self.notes = ["F", "F#", "G", "G#", "A","A#", "B", "C", "C#", "D", "D#", "E"]
+
             self.f_nominal = []
+            for i in range((len(self.fi)//12)+1):
+                self.f_nominal += [str(note)+str(i+1) for note in self.notes]
 
-            k = 0
-            while len(self.f_nominal) < len(self.fi) - i:
-                self.f_nominal += ["{0:.{width}f}k".format(10 ** k * f, width=2 - k) for f in basis]
-                k += 1
-            self.f_nominal = self.f_nominal[:len(self.fi) - i]
+            self.f_nominal = self.f_nominal[:len(self.fi)]
 
-            k = 0
-            while len(self.f_nominal) < len(self.fi):
-                self.f_nominal = ["%d" % (10 ** (2 - k) * f) for f in basis] + self.f_nominal
-                k += 1
-            self.f_nominal = self.f_nominal[-len(self.fi):]
+            #self.f_nominal = []
+            #k = 0
+            #while len(self.f_nominal) < len(self.fi):
+            #    self.f_nominal += [str(10 ** k * f) for f in basis]
+            #    k += 1
+
+            # k = 0
+            # while len(self.f_nominal) < len(self.fi) - i:
+            #     self.f_nominal += ["{0:.{width}f}k".format(10 ** k * f, width=2 - k) for f in basis]
+            #     k += 1
+            # self.f_nominal = self.f_nominal[:len(self.fi) - i]
+
+            # k = 0
+            # while len(self.f_nominal) < len(self.fi):
+            #     self.f_nominal = ["%d" % (10 ** (2 - k) * f) for f in basis] + self.f_nominal
+            #     k += 1
+            # self.f_nominal = self.f_nominal[-len(self.fi):]

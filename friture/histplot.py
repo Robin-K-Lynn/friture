@@ -54,7 +54,7 @@ class HistPlot(QObject):
         self._histplot_data.horizontal_axis.show_minor_grid_lines = True
 
         self._histplot_data.vertical_axis.setRange(0, 1)
-        self._histplot_data.horizontal_axis.setRange(44, 22000)
+        self._histplot_data.horizontal_axis.setRange(44, 5000)
 
         self.paused = False
 
@@ -63,10 +63,10 @@ class HistPlot(QObject):
         self.peak_decay = ones((3,)) * PEAK_DECAY_RATE
 
         self.normVerticalScaleTransform = CoordinateTransform(0, 1, 1, 0, 0)
-        self.normHorizontalScaleTransform = CoordinateTransform(44, 22000, 1, 0, 0)
+        self.normHorizontalScaleTransform = CoordinateTransform(44, 5000, 1, 0, 0)
 
-        self.normHorizontalScaleTransform.setScale(fscales.Logarithmic)
-        self._histplot_data.horizontal_axis.setScale(fscales.Logarithmic)
+        self.normHorizontalScaleTransform.setScale(fscales.Octave)
+        self._histplot_data.horizontal_axis.setScale(fscales.Octave)
 
     def qml_file_name(self):
         return "HistPlot.qml"

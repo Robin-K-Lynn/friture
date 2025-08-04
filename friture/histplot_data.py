@@ -45,7 +45,7 @@ class HistPlot_Data(Scope_Data):
         # never display more than 60 labels
         # it is not useful visually
         # and the loop to build them would be too slow
-        if label_count > 60:
+        if label_count > 600:
             label_count = 0
 
         if label_count != len(self._bar_labels):
